@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #2f6b1e; /* verde campo */
+  --color-secondary: #6b3410; /* marrom porteira */
+  --color-accent: #e4720e; /* laranja sol */
+  --color-accent-2: #f4b41a; /* amarelo sol */
+  --color-bg: #faf6ec; /* creme */
+  --color-ink: #2a1407; /* texto escuro (terra) */
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-creme text-porteira-900 antialiased;
+    font-feature-settings: "ss01", "cv01";
+  }
+
+  /* Foco acessível e consistente */
+  :where(a, button, input, textarea, [tabindex]):focus-visible {
+    outline: 3px solid #e4720e;
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  ::selection {
+    background: #f4b41a;
+    color: #2a1407;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-campo-200 bg-campo-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-campo-700;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold transition-all duration-200 focus-visible:outline-none;
+    min-height: 48px;
+  }
+
+  .btn-primary {
+    @apply btn bg-campo-600 text-white shadow-soft hover:bg-campo-700 hover:shadow-card active:scale-[0.98];
+  }
+
+  .btn-accent {
+    @apply btn bg-sol-600 text-white shadow-soft hover:bg-sol-700 hover:shadow-glow active:scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply btn border border-porteira-200 bg-white/70 text-porteira-700 hover:border-porteira-300 hover:bg-white active:scale-[0.98];
+  }
+
+  .card {
+    @apply rounded-3xl border border-porteira-100 bg-white p-7 shadow-soft transition-all duration-300;
+  }
+
+  .heading {
+    @apply font-display font-bold leading-[1.05] tracking-tight text-porteira-800;
+  }
+
+  /* textura sutil de "grão" para seções escuras */
+  .grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
