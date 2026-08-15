@@ -2,6 +2,7 @@
 
 import { Reveal } from "./ui/Reveal";
 import { Handshake } from "lucide-react";
+import { asset } from "@/lib/basePath";
 
 /**
  * Faixa de credibilidade com os parceiros.
@@ -53,6 +54,8 @@ function PartnerSeal({
   ratio: number;
 }) {
   const height = 30; // px
+  // mask-image é montado à mão, então o basePath do Pages não entra sozinho.
+  const url = asset(src);
   return (
     <div
       className="flex h-16 min-w-[168px] items-center justify-center rounded-2xl border border-porteira-100 bg-creme px-8 shadow-soft transition hover:shadow-card"
@@ -65,8 +68,8 @@ function PartnerSeal({
         style={{
           height,
           width: height * ratio,
-          maskImage: `url(${src})`,
-          WebkitMaskImage: `url(${src})`,
+          maskImage: `url(${url})`,
+          WebkitMaskImage: `url(${url})`,
           maskRepeat: "no-repeat",
           WebkitMaskRepeat: "no-repeat",
           maskPosition: "center",

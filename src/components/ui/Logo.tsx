@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { asset } from "@/lib/basePath";
 
 /**
  * Marca da Porteira Aberta.
@@ -19,7 +20,7 @@ export function LogoBadge({
   if (useImage) {
     return (
       <Image
-        src="/logo.jpg"
+        src={asset("/logo.jpg")}
         alt="Porteira Aberta — Projetos Agropecuários"
         width={size}
         height={size}

@@ -6,6 +6,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import gsap from "gsap";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import { WhatsAppButton } from "./ui/WhatsAppButton";
+import { asset } from "@/lib/basePath";
 
 const ROTATING = ["Custeio", "Investimento", "PRONAF", "FCO", "a sua safra"];
 
@@ -72,7 +73,7 @@ export function Hero() {
       {/* ---- Foto de fundo (lavoura ao pôr do sol) com parallax ---- */}
       <div ref={skyRef} className="absolute inset-x-0 top-0 -z-30 h-[118%]">
         <Image
-          src="/hero.png"
+          src={asset("/hero.png")}
           alt="Lavoura de soja ao pôr do sol"
           fill
           priority
